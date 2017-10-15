@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('wow2 App', () => {
+describe('wow App', () => {
   let page: AppPage;
 
   beforeEach(() => {
