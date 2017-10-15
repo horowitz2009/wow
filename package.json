@@ -1,5 +1,5 @@
 {
-  "name": "wow",
+  "name": "wow2",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -46,6 +46,6 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
-    "typescript": "^2.5.3"
+    "typescript": "^2.3.3"
   }
 }
