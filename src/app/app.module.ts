@@ -17,7 +17,7 @@ import { ProductListComponent } from './product/product-list.component';
 import { KeepHtmlPipe } from './keephtml/keep-html.pipe';
 import { RestComponent } from './rest/rest.component';
 
-//import { HttpModule }    from '@angular/http';
+// import { HttpModule }    from '@angular/http';
 
 
 export function HttpLoaderFactory( http: HttpClient ) {
