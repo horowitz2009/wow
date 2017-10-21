@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+//import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+//import { InMemoryDataService } from './in-memory-data.service';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -36,7 +36,7 @@ export function HttpLoaderFactory( http: HttpClient ) {
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService ),
+        //HttpClientInMemoryWebApiModule.forRoot( InMemoryDataService ),
 
         TranslateModule.forRoot( {
             loader: {

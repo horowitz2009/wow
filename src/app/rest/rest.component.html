@@ -1,3 +1,14 @@
 <p>
   {{foo}}
 </p>
+
+<div *ngFor="let product of products">
+
+  <h2>{{product.name}}</h2>
+  
+  <div *ngIf="product.additionalAttributes" [innerHTML]='product.additionalAttributes.a | keepHtml'></div>
+  <p>published: {{product.published}}
+  <div *ngIf="product.published">PUBLISHED!</div>
+  <p>created on: {{product.createdOn | date}}
+  <p>price: {{product.price | currency}}
+</div>
