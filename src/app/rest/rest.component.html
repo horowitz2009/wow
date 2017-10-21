@@ -1,14 +1,48 @@
-<p>
-  {{foo}}
-</p>
+<p>{{foo}}</p>
 
-<div *ngFor="let product of products">
+<button (click)="createNew()">create new</button>
+<div *ngIf="products">
+	<div *ngFor="let product of products">
 
-  <h2>{{product.name}}</h2>
-  
-  <div *ngIf="product.additionalAttributes" [innerHTML]='product.additionalAttributes.a | keepHtml'></div>
-  <p>published: {{product.published}}
-  <div *ngIf="product.published">PUBLISHED!</div>
-  <p>created on: {{product.createdOn | date}}
-  <p>price: {{product.price | currency}}
+		<h2>{{product.name}}</h2>
+		<div>
+			additional:
+			<div *ngIf="product.additionalAttributes"
+				[innerHTML]='product.additionalAttributes.a | keepHtml'></div>
+		</div>
+		<p>published: {{product.published}}
+		<div *ngIf="product.published">PUBLISHED!</div>
+		<p>created on: {{product.createdOn | date}}
+		<p>price: {{product.price | currency}}
+	</div>
+</div>
+
+
+<p>SINGLE:</p>
+<div *ngIf="product">
+
+	<h2>{{product.name}}</h2>
+	<div>
+		additional:
+		<div *ngIf="product.additionalAttributes"
+			[innerHTML]='product.additionalAttributes.a | keepHtml'></div>
+	</div>
+	<p>published: {{product.published}}
+	<div *ngIf="product.published">PUBLISHED!</div>
+	<p>created on: {{product.createdOn | date}}
+	<p>price: {{product.price | currency}}
+</div>
+
+<div *ngIf="p && p.id">
+
+	<h2>{{p.id}} {{p.name}}</h2>
+	<div>
+		additional:
+		<div *ngIf="product.additionalAttributes"
+			[innerHTML]='p.additionalAttributes.a | keepHtml'></div>
+	</div>
+	<p>published: {{p.published}}
+	<div *ngIf="p.published">PUBLISHED!</div>
+	<p>created on: {{p.createdOn | date}}
+	<p>price: {{p.price | currency}}
 </div>

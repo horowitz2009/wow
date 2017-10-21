@@ -9,7 +9,10 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+	"api.php",
+	"api2.php",
+	".htaccess"
       ],
       "index": "index.html",
       "main": "main.ts",

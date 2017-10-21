@@ -1,11 +1,8 @@
-import { JsonProperty } from 'json-typescript-mapper';
-
 export class Product {
 
     id: number;
     name: string;
 
-    @JsonProperty( 'category_id' )
     categoryId: number;
 
 
@@ -23,8 +20,4 @@ export class Product {
     
     additionalAttributes: any;
     createdOn: string;
-}
-
-export class Attributes {
-    a: string;
 }
