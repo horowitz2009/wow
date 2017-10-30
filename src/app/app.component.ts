@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { ProductService } from "./product/product.service";
+//import { ProductService } from "./product/product.service";
+import { ProductDatastoredService } from "./product/product-datastored.service";
+import { Product } from "./product/product";
+import { Observable } from "rxjs/Observable";
+
+import * as $ from 'jquery';
+window["$"] = $;
+window["jQuery"] = $;
 
 @Component( {
     selector: 'app-root',
@@ -10,8 +17,9 @@ import { ProductService } from "./product/product.service";
 export class AppComponent implements OnInit {
     title = 'app';
     param = { value: 'world' };
+    products: Observable<Product[]> = undefined;
 
-    constructor( public translate: TranslateService, private productService: ProductService ) {
+    constructor( public translate: TranslateService, private productService: ProductDatastoredService ) {
         console.log( 'app.component' );
 
         //      translate.setTranslation('en', {
@@ -43,14 +51,20 @@ export class AppComponent implements OnInit {
         console.log( "app componened done" );
     }
 
+    toggleTitle() {
+        $('.title').slideToggle(400, () => {
+            console.log('damn');
+        });
+    }
 
     deleteProduct( id: number ) {
         console.log( 'deleting...' );
-        let res = this.productService.delete2( id ).then( res => {
-            console.log( "res:" );
-            console.log( res );
-
-        } );
+        this.productService.remove(id);
+//        const res = this.productService.delete2( id ).then( res => {
+//            console.log( "res:" );
+//            console.log( res );
+//
+//        } );
     }
 
 
@@ -62,5 +76,13 @@ export class AppComponent implements OnInit {
 
         // the lang to use, if the lang isn't available, it will use the current loader to get them
         //this.translate.use('fr');
+        
+            this.products = this.productService.products; // subscribe to entire collection
+//            this.singleTodo$ = this.todoService.todos
+//                                   .map(todos => todos.find(item => item.id === '1'));  
+//                                   // subscribe to only one todo 
+//              
+            this.productService.loadAll();    // load all todos
+            //this.todoService.load('1');    // load only todo with id of '1'
     }
 }

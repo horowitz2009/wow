@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: "app/"
+  apiUrl: "http://localhost/api2.php"
 };

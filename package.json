@@ -24,8 +24,13 @@
     "@angular/router": "^4.4.6",
     "@ngx-translate/core": "^8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
+    "@types/jquery": "^3.2.15",
     "angular-in-memory-web-api": "^0.5.0",
+    "bootstrap": "^4.0.0-beta",
     "core-js": "^2.4.1",
+    "jquery": "^3.2.1",
+    "ngx-bootstrap": "^1.9.3",
+    "popper.js": "^1.12.6",
     "rxjs": "^5.4.2",
     "zone.js": "^0.8.14"
   },

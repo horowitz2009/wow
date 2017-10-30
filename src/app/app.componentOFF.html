@@ -1,0 +1,621 @@
+
+
+
+
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1 class="title">
+    Welcome to {{title}}!
+  </h1>
+</div>
+<button (click)="toggleTitle()">click here</button>
+
+<checkout-form></checkout-form>
+<div><app-rest></app-rest></div>
+
+<div>DAMN</div>
+<div *ngFor="let product of products | async">
+  {{ product.name }} <button (click)="deleteProduct(product.id)">x</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- -----------=========================================== -->
+
+
+
+<header class="main-header fixed">
+      <div class="container">
+        <div class="row">
+          <nav class="navbar navbar-default" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html"><i class="icon_heart_alt"></i> Sense</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="navbar-collapse collapse" id="navbar-collapse" style="height: 1px;">          
+              <ul class="nav navbar-nav navbar-right" id="nav">
+                <li class=""><a href="#home">Home</a></li>
+                <li class="active"><a href="#services">Services</a></li>
+                <li class=""><a href="#work">Work</a></li>
+                <li class=""><a href="#team">Team</a></li>
+                <li class=""><a href="#skills">Skills</a></li>
+                <li class=""><a href="#pricing">Pricing</a></li>
+                <li class="dropdown">
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li class=""><a href="#latest-from-blog">Blog Section</a></li>
+                    <li><a href="blog-home.html" class="external">Blog Home</a></li>
+                    <li><a href="blog-single.html" class="external">Blog Single</a></li>                  
+                  </ul>
+                </li>
+                <li class=""><a href="#contacts">Contacts</a></li>
+                <li class="dropdown">
+                  <a href="" class="dropdown-toggle another" data-toggle="dropdown">More <b class="caret"></b></a>
+                  <ul class="dropdown-menu">                  
+                    <li><a href="app-page.html" class="external">App Landing Page</a></li>
+                    <li><a href="coming-soon.html" class="external">Coming Soon Page</a></li>
+                  </ul>
+                </li>              
+              </ul>
+            </div><!-- /.navbar-collapse -->        
+          </nav>
+        </div>        
+      </div>      
+    </header>
+
+<!-- HEADER END -->
+
+
+ <!-- ///  start promo  /// -->
+    <section class="promo static" style="background-image: url(assets/img/main-bg.jpg)" id="home">
+      <div class="promo-block wow bounceIn" data-wow-duration="2s">
+        <h1 class="lead">the best way <br>to launch your project</h1>
+        <div class="buttons">
+          <ul class="list-inline">
+            <li><a href="" class="btn btn-primary btn-lg">Sexy Button</a></li>            
+            <li><a href="" class="btn btn-white btn-lg">Clean Button</a></li>                     
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ///  services  /// -->
+    <section class="services section" id="services">
+      <div class="container">
+        <div class="heading-section wow bounceIn" data-wow-duration="1.6s">
+          <h1>Services</h1>
+          <div class="separator"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 wow slideInRight" data-wow-duration="1s">
+            <div class="icon-wrapper">
+              <i class="fa fa-rocket"></i>
+            </div>
+            <div class="text-section">
+              <h3>Web Design</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+              <a href="#" class="btn btn-gray btn-sm">view more</a>
+            </div>            
+          </div>
+          <div class="col-sm-3 wow slideInRight" data-wow-duration="1.2s">
+            <div class="icon-wrapper">
+              <i class="fa fa-code"></i>
+            </div>
+            <div class="text-section">
+              <h3>Web Development</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+              <a href="#" class="btn btn-gray btn-sm">view more</a>
+            </div>            
+          </div>
+          <div class="col-sm-3 wow slideInRight" data-wow-duration="1.4s">
+            <div class="icon-wrapper">
+              <i class="fa fa-mobile"></i>
+            </div>
+            <div class="text-section">
+              <h3>Mobile Apps</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+              <a href="#" class="btn btn-gray btn-sm">view more</a>
+            </div>            
+          </div>
+          <div class="col-sm-3 wow slideInRight" data-wow-duration="1.6s">
+            <div class="icon-wrapper">
+              <i class="fa fa-signal"></i>
+            </div>
+            <div class="text-section">
+              <h3>Seo Optimization</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+              <a href="#" class="btn btn-gray btn-sm">view more</a>
+            </div>            
+          </div>          
+        </div>
+      </div>
+    </section>
+
+    <!-- ///  work  /// -->
+    <section class="work section fill" id="work">
+      <div class="container">
+        <div class="heading-section wow bounceIn" data-wow-duration="1.6s">
+          <h1>Recent Work</h1>
+          <div class="separator"></div>
+        </div>
+        <div class="filter-buttons" id="portfolioFilter">
+          <ul class="list-inline">
+            <li><a href="" data-filter="*">ALL</a></li>
+            <li><a href="" data-filter=".p-video">VIDEO</a></li>
+            <li><a href="" data-filter=".p-photo">PHOTO</a></li>
+          </ul>
+        </div>
+        <div class="portfolio-list clearfix" id="portfolioList">
+          <div class="p-item p-photo">
+            <div class="work-item">
+              <a href="assets/img/portfolio/p1.jpg" data-lightbox="roadtrip" data-title="Sexy description" class="img-wrapper">
+                <div class="overlay">
+                  <i class="fa fa-search-plus"></i>
+                </div>
+                <img src="assets/img/portfolio/p1.jpg" alt="//" class="img-responsive">
+              </a>
+              <div class="description">
+                <p>Sexy description and <a href="#">sexy link</a></p>
+              </div>
+            </div>  
+          </div>
+          <div class="p-item p-video">
+            <div class="work-item">
+              <a href="assets/img/portfolio/p2.jpg" data-lightbox="roadtrip" data-title="Sexy description" class="img-wrapper">
+                <div class="overlay">
+                  <i class="fa fa-search-plus"></i>
+                </div>
+                <img src="assets/img/portfolio/p2.jpg" alt="//" class="img-responsive">
+              </a>
+              <div class="description">
+                <p>Sexy description and <a href="#">sexy link</a></p>
+              </div>
+            </div>  
+          </div>
+          <div class="p-item p-photo">
+            <div class="work-item">
+              <a href="assets/img/portfolio/p3.jpg" data-lightbox="roadtrip" data-title="Sexy description" class="img-wrapper">
+                <div class="overlay">
+                  <i class="fa fa-search-plus"></i>
+                </div>
+                <img src="assets/img/portfolio/p3.jpg" alt="//" class="img-responsive">
+              </a>
+              <div class="description">
+                <p>Sexy description and <a href="#">sexy link</a></p>
+              </div>
+            </div>  
+          </div>
+          <div class="p-item p-video">
+            <div class="work-item">
+              <a href="assets/img/portfolio/p4.jpg" data-lightbox="roadtrip" data-title="Sexy description" class="img-wrapper">
+                <div class="overlay">
+                  <i class="fa fa-search-plus"></i>
+                </div>
+                <img src="assets/img/portfolio/p4.jpg" alt="//" class="img-responsive">
+              </a>
+              <div class="description">
+                <p>Sexy description and <a href="#">sexy link</a></p>
+              </div>
+            </div>  
+          </div>
+          <div class="p-item p-photo">
+            <div class="work-item">
+              <a href="assets/img/portfolio/p5.jpg" data-lightbox="roadtrip" data-title="Sexy description" class="img-wrapper">
+                <div class="overlay">
+                  <i class="fa fa-search-plus"></i>
+                </div>
+                <img src="assets/img/portfolio/p5.jpg" alt="//" class="img-responsive">
+              </a>
+              <div class="description">
+                <p>Sexy description and <a href="#">sexy link</a></p>
+              </div>
+            </div>  
+          </div>
+          <div class="p-item p-video">
+            <div class="work-item">
+              <a href="assets/img/portfolio/p6.jpg" data-lightbox="roadtrip" data-title="Sexy description" class="img-wrapper">
+                <div class="overlay">
+                  <i class="fa fa-search-plus"></i>
+                </div>
+                <img src="assets/img/portfolio/p6.jpg" alt="//" class="img-responsive">
+              </a>
+              <div class="description">
+                <p>Sexy description and <a href="#">sexy link</a></p>
+              </div>
+            </div>  
+          </div>          
+        </div>
+      </div>
+    </section>
+
+    <!-- ///  team  /// -->
+    <section class="team section" id="team">
+      <div class="container">
+        <div class="heading-section wow bounceIn" data-wow-duration="1.6s">
+          <h1>Team</h1>
+          <div class="separator"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2 wow bounceIn" data-wow-duration="1.6s">
+            <p class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div>        
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="person wow slideInRight" data-wow-duration="1s">
+              <img src="assets/img/persons/p1.jpg" alt="" class="img-rounded">
+              <h4>Little Lora <span>- Manager</span></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <ul class="list-inline">
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-skype"></i></a></li>
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-envelope"></i></a></li>
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="person wow slideInRight" data-wow-duration="1.2s">
+              <img src="assets/img/persons/p2.jpg" alt="" class="img-rounded">
+              <h4>Cute Marina <span>- JS-developer</span></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <ul class="list-inline">
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-skype"></i></a></li>
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-envelope"></i></a></li>
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="person wow slideInRight" data-wow-duration="1.4s">
+              <img src="assets/img/persons/p3.jpg" alt="" class="img-rounded">
+              <h4>Beauty Brit<span> - CEO</span></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <ul class="list-inline">
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-skype"></i></a></li>
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-envelope"></i></a></li>
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="person wow slideInRight" data-wow-duration="1.6s">
+              <img src="assets/img/persons/p4.jpg" alt="" class="img-rounded">
+              <h4>Awesome Sarma <span> - Sales Manager</span></h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <ul class="list-inline">
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-skype"></i></a></li>
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-envelope"></i></a></li>
+                <li><a href="" class="btn btn-block btn-gray"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>          
+        </div>        
+      </div>
+    </section>    
+
+    <!-- ///  skills  /// -->
+    <section class="skills section fill" id="skills">
+      <div class="container">
+        <div class="heading-section wow bounceIn" data-wow-duration="1.6s">
+          <h1>Skills</h1>
+          <div class="separator"></div>
+        </div>
+        <div class="row wow flipInX" data-wow-duration="1.6s">
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6">
+                <p>HTML5/CSS3</p>
+              </div>
+              <div class="col-sm-6 text-right">
+                <p>95%</p>
+              </div>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">
+                <span class="sr-only">95% Complete</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6">
+                <p>JavaScript</p>
+              </div>
+              <div class="col-sm-6 text-right">
+                <p>84%</p>
+              </div>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" style="width: 84%;">
+                <span class="sr-only">84% Complete</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6">
+                <p>Mobile Dev</p>
+              </div>
+              <div class="col-sm-6 text-right">
+                <p>77%</p>
+              </div>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%;">
+                <span class="sr-only">77% Complete</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6">
+                <p>Web Design</p>
+              </div>
+              <div class="col-sm-6 text-right">
+                <p>92%</p>
+              </div>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" style="width: 92%;">
+                <span class="sr-only">92% Complete</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6">
+                <p>Wordpress</p>
+              </div>
+              <div class="col-sm-6 text-right">
+                <p>82%</p>
+              </div>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" style="width: 82%;">
+                <span class="sr-only">82% Complete</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6">
+                <p>Backend Dev</p>
+              </div>
+              <div class="col-sm-6 text-right">
+                <p>70%</p>
+              </div>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                <span class="sr-only">70% Complete</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ///  pricing  /// -->
+    <section class="pricing section" id="pricing">
+      <div class="container">
+        <div class="heading-section wow bounceIn" data-wow-duration="1.6s">
+          <h1>Pricing</h1>
+          <div class="separator"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="price-column wow fadeInDown" data-wow-duration="1.2s">
+              <h3>BASIC</h3>
+              <p class="cost">7<span>$</span></p>
+              <ul class="list-unstyled features-list">
+                <li>16GB Disk Space</li>
+                <li>100mb Bandwith</li>
+                <li>10 Email Accounts</li>
+                <li>1 Domain</li>
+                <li>Free Back Up</li>
+              </ul>
+              <a href="#" class="btn btn-primary">PURCHASE</a>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="price-column popular wow fadeInDown" data-wow-duration="1.4s">
+              <h3>STANDART</h3>
+              <p class="cost">10<span>$</span></p>
+              <ul class="list-unstyled features-list">
+                <li>16GB Disk Space</li>
+                <li>100mb Bandwith</li>
+                <li>10 Email Accounts</li>
+                <li>1 Domain</li>
+                <li>Free Back Up</li>
+              </ul>
+              <a href="#" class="btn btn-white">PURCHASE</a>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="price-column wow fadeInDown" data-wow-duration="1.6s">
+              <h3>EXTREME</h3>
+              <p class="cost">12<span>$</span></p>
+              <ul class="list-unstyled features-list">
+                <li>16GB Disk Space</li>
+                <li>100mb Bandwith</li>
+                <li>10 Email Accounts</li>
+                <li>1 Domain</li>
+                <li>Free Back Up</li>
+              </ul>
+              <a href="#" class="btn btn-primary">PURCHASE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ///  latest from blog  /// -->
+    <section class="recent-posts section fill" id="latest-from-blog">
+      <div class="container">
+        <div class="heading-section wow bounceIn" data-wow-duration="1.6s">
+          <h1>LATEST FROM BLOG</h1>
+          <div class="separator"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9 wow slideInLeft" data-wow-duration="1.4s">
+            <div class="row thumb-list">
+              <div class="col-sm-4 col-xs-6">
+                <a href="">
+                  <div class="thumb">
+                    <span class="date">15th MAY</span>
+                    <img src="assets/img/blog/thumb1.jpg" alt="" class="img-responsive img-rounded">
+                  </div>                  
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                </a>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <a href="">
+                  <div class="thumb">
+                    <span class="date">15th MAY</span>
+                    <img src="assets/img/blog/thumb2.jpg" alt="" class="img-responsive img-rounded">
+                  </div>                  
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                </a>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <a href="">
+                  <div class="thumb">
+                    <span class="date">15th MAY</span>
+                    <img src="assets/img/blog/thumb3.jpg" alt="" class="img-responsive img-rounded">
+                  </div>                  
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                </a>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <a href="">
+                  <div class="thumb">
+                    <span class="date">15th MAY</span>
+                    <img src="assets/img/blog/thumb4.jpg" alt="" class="img-responsive img-rounded">
+                  </div>                  
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                </a>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <a href="">
+                  <div class="thumb">
+                    <span class="date">15th MAY</span>
+                    <img src="assets/img/blog/thumb5.jpg" alt="" class="img-responsive img-rounded">
+                  </div>                  
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                </a>
+              </div>
+              <div class="col-sm-4 col-xs-6">
+                <a href="">
+                  <div class="thumb">
+                    <span class="date">15th MAY</span>
+                    <img src="assets/img/blog/thumb6.jpg" alt="" class="img-responsive img-rounded">
+                  </div>                  
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+                </a>
+              </div>
+            </div>
+          </div>
+          <aside class="col-sm-3 wow slideInRight" data-wow-duration="1.4s">
+            <h4>GATEGORIES</h4>
+            <hr>
+            <ul class="cat-list list-unstyled">
+              <li><a href="#">Web</a></li>
+              <li><a href="#">Business</a></li>
+              <li><a href="#">Development</a></li>
+              <li><a href="#">SEO</a></li>
+              <li><a href="#">Mobile Apps</a></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ///  contacts  /// -->
+    <section class="contacts section" id="contacts">
+      <div class="container">
+        <div class="heading-section wow bounceIn" data-wow-duration="1.6s">
+          <h1>Contacts</h1>
+          <div class="separator"></div>
+        </div>
+        <div class="row wow flipInY" data-wow-duration="1.4s">
+          <div class="col-sm-12">
+            <div class="alert alert-success alert-dismissable" style="display:none" id="contactUsAlert">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              Thank you. Your message has been sent!
+            </div>
+          </div>          
+          <form class="col-sm-8" role="form" id="contactForm">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">                  
+                  <input type="text" class="form-control" placeholder="NAME" data-validation="required" id="userName" name="name">
+                </div>
+                <div class="form-group">                  
+                  <input type="email" class="form-control" data-validation="email" placeholder="EMAIL" id="userEmail" name="email">
+                </div>
+                <div class="form-group">                  
+                  <input type="text" class="form-control" placeholder="SUBJECT" data-validation="required" id="userSubj" name="subj">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">                  
+                  <textarea class="form-control" placeholder="MESSAGE" data-validation="required" name="message" id="userMessage"></textarea>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block">SUBMIT</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="col-sm-4">
+            <ul class="list-unstyled contacts-list">
+              <li><div class="icon-wrapper"><i class="fa fa-map-marker"></i></div> West Kinzie, 20, Chicago</li>
+              <li><div class="icon-wrapper"><i class="fa fa-envelope"></i></div> <a href="">example@example.com</a></li>
+              <li><div class="icon-wrapper"><i class="fa fa-phone"></i></div> +0 888 9090 909</li>
+            </ul>
+          </div>
+        </div>
+      </div>      
+    </section>
+
+    <!-- ///  map  /// -->
+    <section class="map" id="map" data-location="West Kinzie, 20, Chicago"></section>
+
+    <!-- ///  footer  /// -->    
+    <footer class="main-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 social">
+            <ul class="list-inline">
+              <li><a href="" class="btn btn-primary"><i class="fa fa-facebook-square"></i></a></li>
+              <li><a href="" class="btn btn-primary"><i class="fa fa-twitter-square"></i></a></li>
+              <li><a href="" class="btn btn-primary"><i class="fa fa-google-plus-square"></i></a></li>
+              <li><a href="" class="btn btn-primary"><i class="fa fa-linkedin-square"></i></a></li>
+            </ul>
+          </div>
+          <div class="col-sm-6">
+            <div class="copy">
+              <p>&copy; All rights reserved</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>

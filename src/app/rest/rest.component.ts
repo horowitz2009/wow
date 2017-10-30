@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../product/product';
+import { Observable } from "rxjs/Observable";
+import { ProductDatastoredService } from "../product/product-datastored.service";
 
 
 interface ProductsRes {
@@ -15,9 +17,15 @@ interface ProductsRes {
 } )
 export class RestComponent implements OnInit {
     foo = 'bar';
-    constructor( private http: HttpClient ) { }
+    constructor( private http: HttpClient, private productService: ProductDatastoredService  ) { }
     products: Product[];
+    products2: Observable<Product[]> = undefined;
     product: Product;
+    id: number;
+    
+    reload() {
+        this.productService.loadAll();
+    }
 
     createNew() {
         //insert a product
@@ -33,28 +41,39 @@ export class RestComponent implements OnInit {
                 console.log( typeof res );
                 const newId: number = res as number;
                 //TODO read the product again
-                this.readOne(newId);
+                this.readOne( newId );
             } );
 
     }
-    
-    updateExisting() {
+
+    updateExisting( id: number ) {
         //insert a product
         const p = new Product();
-        p.name = 'some name goes here';
-        p.published = false;
-        p.categoryId = 112;
-        p.additionalAttributes = JSON.stringify( { "a": "jeff is also here" } );
-        p.price = 22.90;
-        //p.createdOn = '20171021';
-        this.http.post( 'http://localhost/api2.php/products',
+        p.id = id;
+        p.name = 'new name ouch';
+        p.additionalAttributes = JSON.stringify( { "a": "NOT AGAIN" } );
+        this.http.put( 'http://localhost/api2.php/products/' + id,
             p ).subscribe( res => {
+
+                console.log( res );
                 console.log( typeof res );
-                const newId: number = res as number;
+                //const newId: number = res as number;
                 //TODO read the product again
-                this.readOne(newId);
+                //this.readOne( newId );
             } );
 
+    }
+
+    deleteOne( id: number ) {
+        console.log('deleting ...' + id);
+        this.http.delete( 'http://localhost/api2.php/products/' + id).subscribe( res => {
+
+                console.log( res );
+                console.log( typeof res );
+                //const newId: number = res as number;
+                //TODO read the product again
+                //this.readOne( newId );
+            } );
     }
 
     readOne( id: number ) {
@@ -71,6 +90,9 @@ export class RestComponent implements OnInit {
 
     ngOnInit() {
         console.log( 'REST on init' );
+        
+        this.products2 = this.productService.products; // subscribe to entire collection
+
 
         //get list of products
         this.http.get<any>( 'http://localhost/api2.php/products?transform=true' ).subscribe(
@@ -89,8 +111,8 @@ export class RestComponent implements OnInit {
                 } );
             }
         );
-        
-        this.readOne(1);
+
+        this.readOne( 1 );
 
     }
 

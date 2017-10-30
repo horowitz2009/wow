@@ -1,10 +1,13 @@
 <p>{{foo}}</p>
-
+<p><input [(ngModel)]="id" ></p>
 <button (click)="createNew()">create new</button>
+<button (click)="updateExisting(id)">update</button>
+<button (click)="deleteOne(id)">delete</button>
+<button (click)="reload()">reload</button>
 <div *ngIf="products">
 	<div *ngFor="let product of products">
 
-		<h2>{{product.name}}</h2>
+		<h2>{{product.id}} {{product.name}}</h2>
 		<div>
 			additional:
 			<div *ngIf="product.additionalAttributes"
@@ -21,7 +24,7 @@
 <p>SINGLE:</p>
 <div *ngIf="product">
 
-	<h2>{{product.name}}</h2>
+	<h2>{{product.id}} {{product.name}}</h2>
 	<div>
 		additional:
 		<div *ngIf="product.additionalAttributes"
@@ -32,17 +35,7 @@
 	<p>created on: {{product.createdOn | date}}
 	<p>price: {{product.price | currency}}
 </div>
-
-<div *ngIf="p && p.id">
-
-	<h2>{{p.id}} {{p.name}}</h2>
-	<div>
-		additional:
-		<div *ngIf="product.additionalAttributes"
-			[innerHTML]='p.additionalAttributes.a | keepHtml'></div>
-	</div>
-	<p>published: {{p.published}}
-	<div *ngIf="p.published">PUBLISHED!</div>
-	<p>created on: {{p.createdOn | date}}
-	<p>price: {{p.price | currency}}
+<div *ngFor="let product of products2 | async">
+  {{ product.name }}
 </div>
+

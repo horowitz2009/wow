@@ -10,9 +10,9 @@
       "assets": [
         "assets",
         "favicon.ico",
-	"api.php",
-	"api2.php",
-	".htaccess"
+        "api.php",
+        "api2.php",
+        ".htaccess"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -24,7 +24,12 @@
       "styles": [
         "styles.scss"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/popper.js/dist/esm/popper.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "app/extMain.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
