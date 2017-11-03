@@ -1,252 +1,110 @@
-!function ($) {
+jQuery(document).ready(function( $ ) {
 
-  "use strict";
+  // Preloader
+  $(window).on('load', function() {
+    $('#preloader').delay(100).fadeOut('slow',function(){$(this).remove();});
+  });
 
-  var AppExt = function () {
-
-    // Define DOM elements
-    var elements = {
-      wnd: $(window),
-      header: $(".main-header"),
-      portfolioList : $("#portfolioList"),
-      protfolioFilter : $("#portfolioFilter"),
-      nav : $("#nav"),
-      contAlert: $("#contactUsAlert")
-    };
-
-    // Sticky header
-    var stickHeader = function () {
-      var changeClasses = function () {
-    	  //console.log("change classes... " + $(document).scrollTop());
-    	  //console.log("window height: " + (elements.wnd.height() / 2));
-        if ($(document).scrollTop() > (elements.wnd.height() / 2)) {
-        	console.log("change classes... sticky");
-        	console.log($(".main-header"));
-        	$(".main-header").addClass("sticky");
-        	$(".main-header").removeClass("fixed");
-        } else {
-        	console.log("change classes... fixed");
-        	$(".main-header").addClass("fixed");
-        	$(".main-header").removeClass("sticky");
-        }
-      }
-      console.log("subscribing for scrolling...");
-      elements.wnd.on("scroll", changeClasses)
-      changeClasses();
-    }
-
-    // A jQuery plugin to create and manage Google Maps to jQuery
-    var googleMap = function() {
-      // rgb to hex
-      function rgb2hex(rgb) {
-      	var rgb = rgb || "rgb(2, 2, 2)";
-        if (/^#[0-9A-F]{6}$/i.test(rgb)) return rgb;
-        rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-        function hex(x) {
-          return ("0" + parseInt(x).toString(16)).slice(-2);
-        }
-        return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-      }
-      var ourAddress = $("#map").data("location") || "earth",
-        	mapColor = rgb2hex($("#map").css("backgroundColor")) || "#e2e4e3";
-      function getLatLong(address) {
-        var geo = new google.maps.Geocoder;
-        geo.geocode({
-          'address': address
-        }, function (results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            var latitude = results[0].geometry.location.k,
-              longitude = results[0].geometry.location.B,              
-              styleMap = [{
-                "stylers": [{
-                  "hue": mapColor
-                }, {
-                  "saturation": 0
-                }]
-              }, {
-                "featureType": "road",
-                "elementType": "geometry",
-                "stylers": [{
-                  "lightness": 100
-                }, {
-                  "visibility": "simplified"
-                }]
-              }, {
-                "featureType": "road",
-                "elementType": "labels",
-                "stylers": [{
-                  "visibility": "off"
-                }]
-              }];
-              //console.log(results[0].geometry.location);
-            $("#map").gmap3({
-              marker: {
-                address: ourAddress
-              },
-              map: {
-                options: {
-                  center: [latitude, longitude],
-                  zoom: 15,
-                  mapTypeId: google.maps.MapTypeId.ROADMAP,
-                  styles: styleMap
-                }
-              }
-            })
-          } else {
-            alert("Geocode was not successful for the following reason: " + status);
-          }
-        })
-      }
-      if ($.fn.gmap3 && $("#map").length) {
-        getLatLong(ourAddress)
-      }
-    }
-
-    // Isotope
-    var isotopePortfolio = function() {
-      $(window).load(function () {
-        if($.fn.isotope) {
-          var portfolio = elements.portfolioList.isotope({
-            // options
-            itemSelector: '.p-item',
-            layoutMode: 'fitRows'
-          })
-          elements.protfolioFilter.on("click", "a", function(e){
-            e.preventDefault()
-            var filterValue = $(this).attr('data-filter');
-            portfolio.isotope({ filter: filterValue });
-            return false;
-          })
-        }
-      })   	
-    } 
-
-    // A jQuery plugin for the navigation on one-page sites
-    var navigation = function() {
-      if ($.fn.onePageNav && elements.nav.length) {
-        elements.nav.onePageNav({
-          currentClass: "active",          
-          scrollOffset: 60,          
-          filter: ":not(.external)"
-        })
-      }
-    }
-
-    // Date countdown plugin for jQuery
-    function countdown() {
-      var count = $('#countdown');
-      if ($.fn.countdown && count.length) {
-        count.countdown(count.data("date"), function (event) {
-          var $this = $(this);
-          switch (event.type) {
-          case "seconds":
-          case "minutes":
-          case "hours":
-          case "days":
-          case "weeks":
-          case "daysLeft":
-            $this.find('div#' + event.type).html(event.value);
-            break;
-          case "finished":
-            $this.hide();
-            break;
-          }
-        });
-      }
-    }
-
-    // Reveal Animations When You Scroll
-    function wow() {
-      $(window).load(function () {
-        new WOW().init({
-          mobile: false
-        })
-      });     
-    }
-
-    // A jQuery plugin that enables HTML5 placeholder behavior for browsers that aren’t trying hard enough yet
-    function placeholderIE() {
-      if ($.fn.placeholder) {
-        $("input, textarea").placeholder()
-      }
-    }
-
-    // validation and sending forms
-    function validateAndSend() {
-      if($.fn.validateForm) {
-        $.validate({
-          form: '#contactForm',
-          validateOnBlur: false,
-          addSuggestions: false,
-          scrollToTopOnError : false,
-          onSuccess: function () {
-            var name = $("#userName").val(),
-              email = $("#userEmail").val(),
-              phone = $("#userSubj").val(),
-              plan = $("#userMessage").val(),
-              allData = $("#contactForm").serialize();
-            	$.ajax({
-  	            type: "POST",
-  	            url: "php/contact.php",
-  	            data: allData,
-  	            success: function () {  
-  	            	elements.contAlert.show()            
-  	              $("#userName, #userEmail, #userSubj, #userMessage").val("")              
-              	}
-            	});
-            return false;
-          }
-        })
-        var messageForError = $("#helpBlock");
-        $.validate({
-          form: "#subscribeForm",      
-          errorMessagePosition: messageForError,
-          scrollToTopOnError : false,  
-          onSuccess: function () {
-            var sEmail = $("#sEmail").val(),
-              allData = $("#subscribeForm").serialize();
-  	          $.ajax({
-  	            type: "POST",
-  	            url: "php/subscribe.php",
-  	            data: allData,
-  	            success: function () {
-  	              elements.contAlert.show() 
-  	              $("#sEmail").val("")
-              	}
-            	});
-            return false;
-          }
-        })
-      }
-    }
-
-    // Preloader
-    function preloader() {
-      $(window).load(function () {
-        $(".preloader").fadeOut()
-        $("body").removeClass("remove-scroll")
+  // Hero rotating texts
+  $("#hero .rotating").Morphext({
+    animation: "flipInX",
+    separator: ",",
+    speed: 3000
+  });
+  
+  // Initiate the wowjs
+  new WOW().init();
+  
+  // Initiate superfish on nav menu
+  $('.nav-menu').superfish({
+    animation: {opacity:'show'},
+    speed: 400
+  });
+  
+  // Mobile Navigation
+  if( $('#nav-menu-container').length ) {
+      var $mobile_nav = $('#nav-menu-container').clone().prop({ id: 'mobile-nav'});
+      $mobile_nav.find('> ul').attr({ 'class' : '', 'id' : '' });
+      $('body').append( $mobile_nav );
+      $('body').prepend( '<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>' );
+      $('body').append( '<div id="mobile-body-overly"></div>' );
+      $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
+      
+      $(document).on('click', '.menu-has-children i', function(e){
+          $(this).next().toggleClass('menu-item-active');
+          $(this).nextAll('ul').eq(0).slideToggle();
+          $(this).toggleClass("fa-chevron-up fa-chevron-down");
       });
-    }
+      
+      $(document).on('click', '#mobile-nav-toggle', function(e){
+          $('body').toggleClass('mobile-nav-active');
+          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+          $('#mobile-body-overly').toggle();
+      });
+      
+      $(document).click(function (e) {
+          var container = $("#mobile-nav, #mobile-nav-toggle");
+          if (!container.is(e.target) && container.has(e.target).length === 0) {
+             if ( $('body').hasClass('mobile-nav-active') ) {
+                  $('body').removeClass('mobile-nav-active');
+                  $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+                  $('#mobile-body-overly').fadeOut();
+              }
+          }
+      });
+  } else if ( $("#mobile-nav, #mobile-nav-toggle").length ) {
+      $("#mobile-nav, #mobile-nav-toggle").hide();
+  }
+  
+  // Stick the header at top on scroll
+  $("#header").sticky({topSpacing:0, zIndex: '50'});
 
-    return {
-      init: function () {
-      	//preloader()
-        stickHeader()
-        //googleMap()
-        //isotopePortfolio()
-        //navigation()
-        //wow()
-        //countdown()
-        //placeholderIE()
-        //validateAndSend()
+  // Smoth scroll on page hash links
+  $('a[href*="#"]:not([href="#"])').on('click', function() {
+      if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          if (target.length) {
+              
+              var top_space = 0;
+              
+              if( $('#header').length ) {
+                top_space = $('#header').outerHeight();
+              }
+              
+              $('html, body').animate({
+                  scrollTop: target.offset().top - top_space
+              }, 1500, 'easeInOutExpo');
+
+              if ( $(this).parents('.nav-menu').length ) {
+                $('.nav-menu .menu-active').removeClass('menu-active');
+                $(this).closest('li').addClass('menu-active');
+              }
+
+              if ( $('body').hasClass('mobile-nav-active') ) {
+                  $('body').removeClass('mobile-nav-active');
+                  $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+                  $('#mobile-body-overly').fadeOut();
+              }
+              
+              return false;
+          }
       }
-    }
-  }();
+  });
+  
+  // Back to top button
+  $(window).scroll(function() {
 
+      if ($(this).scrollTop() > 100) {
+          $('.back-to-top').fadeIn('slow');
+      } else {
+          $('.back-to-top').fadeOut('slow');
+      }
+      
+  });
+  
+  $('.back-to-top').click(function(){
+      $('html, body').animate({scrollTop : 0},1500, 'easeInOutExpo');
+      return false;
+  });
 
-  $(function () {
-    // Launch functions
-	  console.log("AppExt: START...");
-    AppExt.init();
-  })
-}(window.jQuery);
+});

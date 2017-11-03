@@ -9,6 +9,11 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "contactform",
+        "css",
+        "fonts",
+        "img",
+        "js",
         "favicon.ico",
         "api.php",
         "api2.php",
@@ -22,13 +27,36 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "css/bootstrap.min.css",
+        "css/font-awesome.min.css",
+        "css/animate.css",
+        "styles.scss"
+      ],
+      "notusedstyles": [
+        "css/bootstrap.min.css",
+        "css/font-awesome.min.css",
+        "css/animate.css",
         "styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/popper.js/dist/esm/popper.js",
+        "../node_modules/jquery.easing/jquery.easing.js",
+        "../node_modules/popper.js/dist/umd/popper.js",
         "../node_modules/bootstrap/dist/js/bootstrap.js",
-        "app/extMain.js"
+        "../manual_modules/Morphext-2.4.4/dist/morphext.js",
+        "../node_modules/wowjs/dist/wow.js",
+        "js/custom.js",
+        "contactform/contactform.js"
+      ],
+      "notused": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/jquery.easing/jquery.easing.js",
+        "../node_modules/popper.js/dist/umd/popper.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../manual_modules/Morphext-2.4.4/dist/morphext.js",
+        "../node_modules/wowjs/dist/wow.js",
+        "js/custom.js",
+        "contactform/contactform.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
