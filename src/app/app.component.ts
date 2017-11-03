@@ -6,8 +6,6 @@ import { Product } from "./product/product";
 import { Observable } from "rxjs/Observable";
 
 import * as $ from 'jquery';
-window["$"] = $;
-window["jQuery"] = $;
 
 @Component( {
     selector: 'app-root',

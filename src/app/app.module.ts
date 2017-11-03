@@ -24,6 +24,7 @@ import { EmailOptionalValidatorDirective } from './email-optional-validator.dire
 
 // import { HttpModule }    from '@angular/http';
 import * as $ from 'jquery';
+import { NavigationComponent } from './navigation/navigation.component';
 
 export function HttpLoaderFactory( http: HttpClient ) {
     return new TranslateHttpLoader( http );
@@ -38,6 +39,7 @@ export function HttpLoaderFactory( http: HttpClient ) {
         CheckoutComponent,
         RestComponent,
         EmailOptionalValidatorDirective,
+        NavigationComponent,
     ],
     imports: [
         BrowserModule,
